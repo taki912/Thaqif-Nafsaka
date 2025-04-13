@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>Science</title>
+  <style>
+    body {
+      font-family: Arial;
+      direction: rtl;
+      background-image: url('596378.jpg'); /* ضع هنا رابط الخلفية التي تريدها */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      width: 180px;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    .card p {
+      padding: 10px;
+      font-size: 15px;
+      margin: 0;
+    }
+
+    iframe {
+      width: 90%;
+      height: 500px;
+      margin-top: 30px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      background-color: white;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        width: 90%;
+      }
+
+      iframe {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="color: rgb(49, 21, 212);">Science</h2>
+
+  <div class="container" id="cardsContainer"></div>
+
+  <iframe id="viewer" src="" style="display: none;"></iframe>
+
+  <script>
+    const cardsData = [
+      { title: "الإسلام وأثره في الحضارة وفضله على الإنسانية", link: "الكتب العلمية/الإسلام وأثره في الحضارة وفضله على الإنسانية.html" },
+      { title: "الانسان بين العلم والدين", link: "الكتب العلمية/الانسان بين العلم والدين.html" },
+      { title: "التفكير العلمي", link: "الكتب العلمية/التفكير العلمي.html" },
+      { title: "الحنين إلى الخرافة - فصول في العلم الزائف", link: "الكتب العلمية/الحنين إلى الخرافة - فصول في العلم الزائف.html" },
+      { title: "القانون في الطب", link: "الكتب العلمية/القانون في الطب.html" },
+      { title: "الكون في قشرة جوز", link: "الكتب العلمية/الكون في قشرة جوز.html" },
+      { title: "من آيات الإعجاز العلمي في القرآن الكريم - الجزء الأول", link: "الكتب العلمية/من آيات الإعجاز العلمي في القرآن الكريم - الجزء الأول.html" },
+      { title: "من آيات الإعجاز العلمي في القرآن الكريم - الجزء الثاني", link: "الكتب العلمية/من آيات الإعجاز العلمي في القرآن الكريم - الجزء الثاني.html" },
+      { title: "وهم الاٍلحاد و أدلة وجود الله", link: "الكتب العلمية/وهم الاٍلحاد وأدلة وجود الله.html" },
+      { title: " عالم الفضاء ", link: "الكتب العلمية/عالم الفضاء.html" }
+    ];
+
+    const container = document.getElementById('cardsContainer');
+    const viewer = document.getElementById('viewer');
+
+    cardsData.forEach(card => {
+      const cardDiv = document.createElement('div');
+      cardDiv.className = 'card';
+
+      const title = document.createElement('p');
+      title.textContent = card.title;
+
+      cardDiv.appendChild(title);
+
+      cardDiv.addEventListener('click', () => {
+        viewer.src = card.link;
+        viewer.style.display = 'block';
+        viewer.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      container.appendChild(cardDiv);
+    });
+  </script>
+
+</body>
+</html>

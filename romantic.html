@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>romantic</title>
+  <style>
+    body {
+      font-family: Arial;
+      direction: rtl;
+      background-image: url('596378.jpg'); /* ضع هنا رابط الخلفية التي تريدها */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      width: 180px;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: rgba(214, 208, 208, 0.781);
+      box-shadow: 0 4px 8px rgba(3, 3, 3, 0.651);
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgb(255, 255, 255);
+    }
+
+    .card p {
+      padding: 10px;
+      font-size: 15px;
+      margin: 0;
+    }
+
+    iframe {
+      width: 90%;
+      height: 500px;
+      margin-top: 30px;
+      border: 2px solid #cccccc;
+      border-radius: 10px;
+      background-color: rgb(255, 255, 255);
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        width: 90%;
+      }
+
+      iframe {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="color: rgb(189, 10, 135);">romantic</h2>
+
+  <div class="container" id="cardsContainer"></div>
+
+  <iframe id="viewer" src="" style="display: none;"></iframe>
+
+  <script>
+    const cardsData = [
+      { title: "روميو وجوليت", link: "الرومانسية/روميو و جوليت.html" },
+      { title: "أحببتك أكثر مما ينبغي", link: "الرومانسية/أحببتك أكثر مما ينبغي.html" },
+      { title: "كبرياء هوى", link: "الرومانسية/كبرياء و هوى.html" },
+      { title: "في قلبي أنثى عبرية", link: "الرومانسية/في قلبي أنثى عبرية.html" },
+      { title: "ذهب مع الريح", link: "الرومانسية/دهب مع الريح.html" },
+      { title: "هي و هو", link: "الرومانسية/هي و هو.html" },
+      { title: "أحدب نوتردام", link: "الرومانسية/أحدب نوتردام.html" },
+      { title: "أين المفر", link: "الرومانسية/أين المفر.html" },
+      { title: "أنا قبلَكِ", link: "الرومانسية/أنا قبلك.html" },
+      { title: "ظل الريح", link: "الرومانسية/ظل الريح.html" },
+      { title: "غربة الياسمين", link: "الرومانسية/غربة الياسمين.html" },
+    ];
+
+    const container = document.getElementById('cardsContainer');
+    const viewer = document.getElementById('viewer');
+
+    cardsData.forEach(card => {
+      const cardDiv = document.createElement('div');
+      cardDiv.className = 'card';
+
+      const title = document.createElement('p');
+      title.textContent = card.title;
+
+      cardDiv.appendChild(title);
+
+      cardDiv.addEventListener('click', () => {
+        viewer.src = card.link;
+        viewer.style.display = 'block';
+        viewer.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      container.appendChild(cardDiv);
+    });
+  </script>
+
+</body>
+</html>

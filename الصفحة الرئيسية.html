@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>باب الثقافة</title>
+  <style>
+    /* إعادة ضبط كافة العناصر */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Tahoma', sans-serif;
+    }
+
+    /* تعريف خلفية الموقع */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(to right, #8d26e0d8, #421bafc4);
+      background-size: cover;
+      position: relative;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* الحاوية الخاصة بالبحث */
+    .group {
+      display: flex;
+      line-height: 28px;
+      align-items: center;
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 300px;
+    }
+
+    .input {
+      font-family: "Montserrat", sans-serif;
+      width: 100%;
+      height: 45px;
+      padding-left: 2.5rem;
+      box-shadow: 0 0 0 1.5px #2b2c37, 0 0 25px -17px #000;
+      border: 0;
+      border-radius: 12px;
+      background-color: #16171d;
+      outline: none;
+      color: #bdbecb;
+      transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+      cursor: text;
+      z-index: 0;
+    }
+
+    .input::placeholder {
+      color: #bdbecb;
+    }
+
+    .input:hover {
+      box-shadow: 0 0 0 2.5px #2f303d, 0px 0px 25px -15px #000;
+    }
+
+    .input:active {
+      transform: scale(0.95);
+    }
+
+    .input:focus {
+      box-shadow: 0 0 0 2.5px #2f303d;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      fill: #bdbecb;
+      width: 1rem;
+      height: 1rem;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* الحاوية الخاصة بالأزرار */
+    .button-container {
+      display: flex;
+      background-color: rgba(245, 73, 144, 0.8);
+      width: 100%;
+      height: 70px;
+      position: fixed;
+      bottom: 0;
+      align-items: center;
+      justify-content: space-evenly;
+      border-radius: 10px 10px 0 0;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px, rgba(245, 73, 144, 0.5) 5px 10px 15px;
+    }
+
+    /* زر الأزرار */
+    .button {
+      outline: 0 !important;
+      border: 0 !important;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      transition: all ease-in-out 0.3s;
+      cursor: pointer;
+    }
+
+    /* تأثير عند مرور الفأرة على الزر */
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    /* الأيقونة داخل الزر */
+    .icon {
+      font-size: 25px;
+    }
+
+    /* الحاوية الخاصة بالبطاقات */
+    .container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      justify-items: center;
+      margin-top: 20px;
+    }
+
+    /* تنسيق البطاقة */
+    .card {
+      width: 200px;
+      height: 200px;
+      background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+      border-radius: 20px;
+      transition: all .3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    /* تنسيق البطاقة الثانية */
+    .card2 {
+      width: 100%;
+      height: 100%;
+      background-color: #1a1a1a;
+      border-radius: 20px;
+      transition: all .2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    /* تأثيرات عند مرور الفأرة على البطاقة */
+    .card2:hover {
+      transform: scale(0.98);
+    }
+
+    .card:hover {
+      box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
+    }
+
+    /* تنسيق الصور داخل البطاقة */
+    .card2 img {
+      width: 60%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    /* تنسيق النص داخل البطاقة */
+    .card2 h3 {
+      color: white;
+      font-size: 16px;
+      text-align: center;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- شريط البحث -->
+  <div class="group">
+    <svg viewBox="0 0 24 24" aria-hidden="true" class="search-icon">
+      <g>
+        <path
+          d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"
+        ></path>
+      </g>
+    </svg>
+    <input
+      id="query"
+      class="input"
+      type="search"
+      placeholder="ابحث عن كتاب..."
+      name="searchbar"
+    />
+  </div>
+
+  <!-- الحاوية الخاصة بالبطاقات -->
+  <div class="container">
+    <!-- بطاقة الكتب العلمية -->
+    <a href="c:\Users\ytaki\OneDrive\سطح المكتب\ثقف نفسك\Science.html" class="card">
+      <div class="card2">
+        <img src="الصفحة الرئسية/Untitled_logo_3_free-file-removebg-preview.png" alt="الكتب العلمية" />
+        <h3>الكتب العلمية</h3>
+      </div>
+    </a>
+
+    <!-- بطاقة الكتب التاريخية -->
+    <a href="history.html" class="card">
+      <div class="card2">
+        <img src="الصفحة الرئسية/Untitled_logo_4_free-file-removebg-preview.png" alt="الكتب التاريخية" />
+        <h3>الكتب التاريخية</h3>
+      </div>
+    </a>
+
+    <!-- بطاقة الروايات الخيالية -->
+    <a href="كتب الخيال .html" class="card">
+      <div class="card2">
+        <img src="الصفحة الرئسية/cooltext4568327.png" alt="الروايات الخيالية" />
+        <h3>الروايات الخيالية</h3>
+      </div>
+    </a>
+
+    <!-- بطاقة الروايات الرومانسية -->
+    <a href="romantic.html" class="card">
+      <div class="card2">
+        <img src="الصفحة الرئسية/result.png" alt="الروايات الرومانسية" />
+        <h3>الروايات الرومانسية</h3>
+      </div>
+    </a>
+  </div>
+
+  <script>
+    // قائمة الكتب
+    const books = [
+      { title: "الكتب العلمية", url: "Science.html" },
+      { title: "الكتب التاريخية", url: "history.html" },
+      { title: "الروايات الخيالية", url: "fiction.html" },
+      { title: "الروايات الرومانسية", url: "romantic.html" },
+    ];
+
+    // البحث في الكتب
+    const input = document.getElementById("query");
+    input.addEventListener("input", () => {
+      const query = input.value.toLowerCase();
+      const filteredBooks = books.filter(book =>
+        book.title.toLowerCase().includes(query)
+      );
+      
+      // تحديث عرض البطاقات بناءً على نتيجة البحث
+      const container = document.querySelector(".container");
+      container.innerHTML = '';
+      filteredBooks.forEach(book => {
+        const card = document.createElement('a');
+        card.classList.add('card');
+        card.href = book.url;
+        card.innerHTML = `
+          <div class="card2">
+            <img src="${book.url.replace('.html', '.jpg')}" alt="${book.title}" />
+            <h3>${book.title}</h3>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    });
+  </script>
+
+</body>
+</html>

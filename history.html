@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>history-books</title>
+  <style>
+    body {
+      font-family: Arial;
+      direction: rtl;
+      background-image: url('596378.jpg'); /* ضع هنا رابط الخلفية التي تريدها */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      width: 180px;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    .card p {
+      padding: 10px;
+      font-size: 15px;
+      margin: 0;
+    }
+
+    iframe {
+      width: 90%;
+      height: 500px;
+      margin-top: 30px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      background-color: white;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        width: 90%;
+      }
+
+      iframe {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="color: rgb(192, 78, 13);">history-books</h2>
+
+  <div class="container" id="cardsContainer"></div>
+
+  <iframe id="viewer" src="" style="display: none;"></iframe>
+
+  <script>
+    const cardsData = [
+      { title: " في التاريخ العباسي و الأندلسي", link: "التاريخ/التاريخ العباسي و الأندلسي.html" },
+      { title: "تاريخ العلاقات الدولية", link: "التاريخ/تاريخ العلاقات الدولية.html" },
+      { title: "أسلحة جراثيم و فولاذ", link: "التاريخ/أسلحة جراثيم و فولاذ.html" },
+      { title: "قصة الحضارة 1", link: "التاريخ/قصة الحضارة 1 .html" },
+      { title: "قصة الحضارة 2", link: "التاريخ/قصة الحضارة2 .html" },
+      { title: "قصة الحضارة 3", link: "التاريخ/قصة الحضارة 3 .html" }, 
+      { title: "قصة الحضارة 4", link: "التاريخ/قصة الحضارة 4 .html" },
+      { title: "قصة الحضارة 5", link: "التاريخ/قصة الحضارة 5 .html" },
+      { title: "  تأملات في تاريخ الرومان", link: "التاريخ/كتاب تأملات في تاريخ الرومان.html" },
+     { title: "تاريخ العرب في الاٍسلام", link: "التاريخ/تاريخ العرب في الاٍسلام.html" },];
+
+    const container = document.getElementById('cardsContainer');
+    const viewer = document.getElementById('viewer');
+
+    cardsData.forEach(card => {
+      const cardDiv = document.createElement('div');
+      cardDiv.className = 'card';
+
+      const title = document.createElement('p');
+      title.textContent = card.title;
+
+      cardDiv.appendChild(title);
+
+      cardDiv.addEventListener('click', () => {
+        viewer.src = card.link;
+        viewer.style.display = 'block';
+        viewer.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      container.appendChild(cardDiv);
+    });
+  </script>
+
+</body>
+</html>
